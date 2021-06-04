@@ -48,14 +48,14 @@ public class AdminController {
 			} else {
 				m.addObject("cl", "alert alert-danger ");
 				m.addObject("msg", "Incorrect UserId or Password! ");
-				m.setViewName("/");
+				m.setViewName("index");
 				return m;
 			}
 
 		} else {
 			m.addObject("cl", "alert alert-danger ");
 			m.addObject("msg", "User Doesn't Exists!");
-			m.setViewName("/");
+			m.setViewName("index");
 			return m;
 		}
 	}
