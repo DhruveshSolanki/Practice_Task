@@ -35,9 +35,9 @@
 						<td>${u.uEmail}</td>
 						<td>${u.uPassword}</td>
 						<td>${u.uRole}</td>
-						<td><a href="deleteUser/${u.uId }"><i
+						<td><a href="deleteuser/${u.uId }"><i
 								class="fas fa-trash text-danger"></i></a> <a
-							href="toupdateUser/${u.uId}"><i
+							href="toupdateuser/${u.uId}"><i
 								class="fas fa-pen-nib text-primary pl-3"></i></a></td>
 					</tr>
 				</c:forEach>

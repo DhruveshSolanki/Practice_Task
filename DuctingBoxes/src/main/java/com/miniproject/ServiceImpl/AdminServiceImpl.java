@@ -49,4 +49,12 @@ public class AdminServiceImpl implements AdminService{
 		return this.adminDao.viewUser();
 	}
 
+	public boolean toEditUser(User user) {
+		return this.adminDao.editUser(user);
+	}
+
+	public boolean toDeleteUser(int uId) {
+		return this.adminDao.deleteUser(uId);
+	}
+
 }

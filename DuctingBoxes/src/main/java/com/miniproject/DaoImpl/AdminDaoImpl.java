@@ -115,4 +115,30 @@ public class AdminDaoImpl implements AdminDao {
 		return u;
 	}
 
+	@Transactional
+	public boolean editUser(User user) {
+		try {
+			User u = this.hibernateTemplate.get(User.class, user.getuId());
+			u.setuEmail(user.getuEmail());
+			u.setuPassword(user.getuPassword());
+			u.setuRole(user.getuRole());
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
+	@Transactional
+	public boolean deleteUser(int uId) {
+		try {
+			User u = this.hibernateTemplate.get(User.class, uId);
+			this.hibernateTemplate.delete(u);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
 }

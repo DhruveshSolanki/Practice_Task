@@ -26,4 +26,7 @@ public interface AdminService {
 	
 	public List<User> toViewUser();
 
+	public boolean toEditUser(User user);
+
+	public boolean toDeleteUser(int uId);
 }

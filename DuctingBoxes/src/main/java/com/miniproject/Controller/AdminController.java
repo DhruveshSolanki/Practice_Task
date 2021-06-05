@@ -48,14 +48,14 @@ public class AdminController {
 			} else {
 				m.addObject("cl", "alert alert-danger ");
 				m.addObject("msg", "Incorrect UserId or Password! ");
-				m.setViewName("/");
+				m.setViewName("index");
 				return m;
 			}
 
 		} else {
 			m.addObject("cl", "alert alert-danger ");
 			m.addObject("msg", "User Doesn't Exists!");
-			m.setViewName("/");
+			m.setViewName("index");
 			return m;
 		}
 	}
@@ -150,5 +150,31 @@ public class AdminController {
 			m.setViewName("redirect:/assistantdetails");
 		}
 		return m;
+	}
+	
+	@GetMapping("/deleteuser/{uId}")
+	public String deleteUser(@PathVariable("uId") int id) {
+		this.adminService.toDeleteUser(id);
+		return "redirect:/assistantdetails";
+	}
+	
+	@GetMapping("/toupdateuser/{uId}")
+	public String toUpdateUser(@PathVariable("uId") int id, Model m) {
+
+		User u = this.adminService.toViewUserById(id);
+		m.addAttribute("u", u);
+		m.addAttribute("title", "Update");
+		m.addAttribute("action", "updateuser");
+		return "addassistant";
+	}
+
+	@PostMapping("/updateuser/{uId}")
+	public String updateUser(@ModelAttribute User user) {
+		boolean id = this.adminService.toEditUser(user);
+		if (id == false) {
+			return "error";
+		} else {
+			return "redirect:/assistantdetails";
+		}
 	}
 }
